@@ -1,0 +1,45 @@
+package com.iiht.forum.UtilTestClass;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.iiht.forum.dto.VisitorCommentsDto;
+import com.iiht.forum.dto.VisitorPostsDto;
+
+import java.io.IOException;
+
+public class JSONUtils 
+{
+    public static byte[] toJson(Object object) throws IOException 
+    {
+        ObjectMapper mapper = new ObjectMapper();
+
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        return mapper.writeValueAsBytes(object);
+    }
+
+    public static VisitorPostsDto createPostDto(String id, String title, String tags, String postDescription) 
+    {
+    	VisitorPostsDto posts = new VisitorPostsDto();
+
+    	posts.setId(id);
+    	posts.setTitle(title);
+    	posts.setTags(tags);
+    	posts.setPostDescription(postDescription);
+  	 	
+    	return posts;
+    }
+    
+    public static VisitorCommentsDto createCommentDto(String id, String postId, String tags, String postComment) 
+    {
+    	VisitorCommentsDto comments = new VisitorCommentsDto();
+
+    	comments.setId(id);
+    	comments.setPostId(postId);
+    	comments.setTags(tags);
+    	comments.setComment(postComment);
+  	 	
+    	return comments;
+    }
+}

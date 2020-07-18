@@ -1,0 +1,5 @@
+
+testPostSuccess=true
+testCommentFailed=false
+testPostFailed=false
+testCommentSuccess=true
