@@ -74,9 +74,9 @@ public class TestFunctional
 //		list.add(new VisitorCommentsDto());
 //		list.add(new VisitorCommentsDto());
 	    
-//	    when(commentService.getCommentById((long)5).thenReturn(List<VisitorCommentsDto> list));
+//	    when(commentService.getCommentById("5").thenReturn(List<VisitorCommentsDto> list));
 	
-//	    List<VisitorCommentsDto> commentFromdb = commentService.getCommentById((long)10);
+//	    List<VisitorCommentsDto> commentFromdb = commentService.getCommentById("10");
 
 //	    yakshaAssert(currentTest(), commentFromdb == list ? true : false, businessTestFile);
 //	}

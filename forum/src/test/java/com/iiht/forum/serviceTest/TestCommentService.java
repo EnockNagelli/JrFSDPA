@@ -27,54 +27,40 @@ public class TestCommentService
 	
 	// -------------------------------------------------------------------------------------------------------------------
 	@Before
-	public void setup() 
-	{
+	public void setup()	{
 		MockitoAnnotations.initMocks(this);
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test 
-	public void testSaveCommentsImplTest() throws Exception 
-	{
+	public void testSaveCommentsImplTest() throws Exception {
 		when(commentService.saveUpdate(MasterData.getCommentDetails())).thenReturn(true); 
-		
 		List<VisitorCommentsDto> commentFromdb = commentService.getCommentById(visitorCommentDto.getPostId());
-		
 	    yakshaAssert(currentTest(), commentFromdb != null ? true : false, businessTestFile);
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test
-	public void testCommentServiceImplTest() throws Exception 
-	{
+	public void testCommentServiceImplTest() throws Exception {
 		boolean value = commentService.saveUpdate(MasterData.getCommentDetails());
-		
 	    yakshaAssert(currentTest(), value ? true : false, businessTestFile);
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test 
-	public void testViewAllCommentsImplTest() throws Exception 
-	{
+	public void testViewAllCommentsImplTest() throws Exception {
 		VisitorCommentsDto value = MasterData.getCommentDetails();
-		
 		VisitorComments comments = new VisitorComments("10", "11", "Cricket", "I like this sport.");
-
 		when(commentService.getVisitorCommentsDto(comments)).thenReturn(value);
-		
 		VisitorCommentsDto commentFromdb = commentService.getVisitorCommentsDto(comments);
-	
 	    yakshaAssert(currentTest(), commentFromdb==value ? true : false, businessTestFile);
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------
 	@Test 
-	public void testViewAllCommentsImplTest2() throws Exception 
-	{ 
+	public void testViewAllCommentsImplTest2() throws Exception { 
 		when(commentService.getVisitorCommentsDto(new VisitorComments())).thenReturn(null);
-		  
 		List<VisitorCommentsDto> commentFromdb = commentService.getCommentById(visitorCommentDto.getPostId());
-
 	    yakshaAssert(currentTest(), commentFromdb==null ? true : false, businessTestFile);
 	}	 	
 }
